@@ -40,6 +40,8 @@ pip install -e models/pytorch-image-models
 
 
 ## Training
+* The used dataset is MMU2. Link for download from [Andy](https://www.cs.princeton.edu/~andyz/irisrecognition): https://www.cs.princeton.edu/~andyz/downloads/MMU2IrisDatabase.zip
+
 * To start the training process, use the command:
 ```
 python train.py --config config/efficientnet_b0.json --device 0
