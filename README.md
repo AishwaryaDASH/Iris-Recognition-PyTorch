@@ -63,6 +63,11 @@ python train.py --config config/efficientnet_b0.json --device 0
   <img src="https://github.com/AntiAegis/Iris-Recognition-PyTorch/blob/master/pics/acc.png" width="430" alt="accessibility text">
 </p>
 
+* Download trained weight:
+```
+gdown https://drive.google.com/uc?id=18-4JLAEJGa1D4My2mky4Co0WU1eDPq6X&export=download
+```
+
 * To ensure the trained model focuses on iris region inside images, I use [Grad-CAM](https://arxiv.org/abs/1610.02391) to visualize attention of the last feature layer (right before Global Average Pooling). To visualize heatmap, use this command:
 ```
 python visualize.py --image /home/antiaegis/datasets/Iris/MMU2/010105.bmp \
