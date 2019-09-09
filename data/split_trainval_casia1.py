@@ -11,7 +11,7 @@ random.seed(0)
 #------------------------------------------------------------------------------
 #  Parameters
 #------------------------------------------------------------------------------
-IMAGE_DIR = "/media/antiaegis/storing/datasets/Iris/MMU2"
+IMAGE_DIR = "/home/member/Workspace/thuync/datasets/Iris/CASIA1"
 
 
 #------------------------------------------------------------------------------
@@ -19,16 +19,14 @@ IMAGE_DIR = "/media/antiaegis/storing/datasets/Iris/MMU2"
 #------------------------------------------------------------------------------
 if __name__ == "__main__":
 	# Get files
-	files = sorted(glob(os.path.join(IMAGE_DIR, "*.*")))
+	files = sorted(glob(os.path.join(IMAGE_DIR, "**/*.*"), recursive=True))
 	print("Number of files:", len(files))
 
 	# Aggregate data
 	data_dict = defaultdict(lambda: defaultdict(lambda: list()))
 	for file in files:
-		basename = os.path.basename(file)[:-4]
-		person_id = int(basename[:-4])
-		eye_id = int(basename[-4:-2])
-		ins_id = int(basename[-2:])
+		basename = os.path.basename(file).split('.')[0]
+		person_id, eye_id, ins_id = basename.split('/')
 		data_dict[person_id][eye_id].append(file)
 
 	for vals in data_dict.values():
@@ -41,16 +39,16 @@ if __name__ == "__main__":
 
 	for key, vals in data_dict.items():
 		for val in vals.values():
-			train_list += [val[i] for i in range(3)]
-			valid_list += [val[i] for i in range(3,5)]
+			train_list += [val[i] for i in range(2)]
+			valid_list += [val[i] for i in range(2,len(val))]
 
 	# Write to file
 	random.shuffle(train_list)
-	with open("data/train.txt", 'w') as fp:
+	with open("data/casia1_train.txt", 'w') as fp:
 		for file in train_list:
 			fp.writelines(file+'\n')
 
 	random.shuffle(valid_list)
-	with open("data/valid.txt", 'w') as fp:
+	with open("data/casia1_valid.txt", 'w') as fp:
 		for file in valid_list:
 			fp.writelines(file+'\n')
