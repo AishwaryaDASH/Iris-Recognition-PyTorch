@@ -92,8 +92,8 @@ class TxtDataset(BaseDataset):
 #  MMU2Dataset
 #------------------------------------------------------------------------------
 class MMU2Dataset(TxtDataset):
-	def __init__(self, *args, **kargs):
-		super(MMU2Dataset, self).__init__(args, kargs)
+	def __init__(self, **kargs):
+		super(MMU2Dataset, self).__init__(**kargs)
 
 	def _get_labels(self):
 		self.labels = [
@@ -106,8 +106,8 @@ class MMU2Dataset(TxtDataset):
 #  CASIA1Dataset
 #------------------------------------------------------------------------------
 class CASIA1Dataset(TxtDataset):
-	def __init__(self, *args, **kargs):
-		super(CASIA1Dataset, self).__init__(args, kargs)
+	def __init__(self, **kargs):
+		super(CASIA1Dataset, self).__init__(**kargs)
 
 	def _get_labels(self):
 		self.labels = [
