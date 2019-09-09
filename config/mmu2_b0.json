@@ -15,7 +15,7 @@
 
 	"train_loader": {
 		"dataset": {
-			"type": "MMU2TxtDataset",
+			"type": "MMU2Dataset",
 			"args": {
 				"txtfile": "data/mmu2_train.txt",
 				"num_classes": 100, "use_sigmoid": false, "color_channel": "RGB",
@@ -33,7 +33,7 @@
 
 	"valid_loader": {
 		"dataset": {
-			"type": "MMU2TxtDataset",
+			"type": "MMU2Dataset",
 			"args": {
 				"txtfile": "data/mmu2_valid.txt",
 				"num_classes": 100, "use_sigmoid": false, "color_channel": "RGB",

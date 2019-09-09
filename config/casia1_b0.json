@@ -15,7 +15,7 @@
 
 	"train_loader": {
 		"dataset": {
-			"type": "MMU2TxtDataset",
+			"type": "CASIA1Dataset",
 			"args": {
 				"txtfile": "data/casia1_train.txt",
 				"num_classes": 100, "use_sigmoid": false, "color_channel": "RGB",
@@ -33,7 +33,7 @@
 
 	"valid_loader": {
 		"dataset": {
-			"type": "MMU2TxtDataset",
+			"type": "CASIA1Dataset",
 			"args": {
 				"txtfile": "data/casia1_valid.txt",
 				"num_classes": 100, "use_sigmoid": false, "color_channel": "RGB",
