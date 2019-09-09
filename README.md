@@ -44,13 +44,13 @@ pip install -e models/pytorch-image-models
 
 * To start the training process, use the command:
 ```
-python train.py --config config/efficientnet_b0.json --device 0
+python train.py --config config/mmu2_b0.json --device 0
 ```
 
 
 ## Results
 
-* The model is [EfficientNet-b0/b1](https://arxiv.org/abs/1905.11946), trained by optimizer [SGDR](https://arxiv.org/abs/1608.03983) with 300 epochs: [config_efficientnet_b0](config/efficientnet_b0.json), [config_efficientnet_b1](config/efficientnet_b1.json).
+* The model is [EfficientNet-b0/b1](https://arxiv.org/abs/1905.11946), trained by optimizer [SGDR](https://arxiv.org/abs/1608.03983) with 300 epochs: [config_efficientnet_b0](config/mmu2_b0.json), [config_efficientnet_b1](config/mmu2_b1.json).
 
 
 * Loss and accuracy is summarized and plotted as follows:
@@ -83,7 +83,7 @@ gdown https://drive.google.com/uc?id=10sOieImsvre4msafbr07F_hdN_o6Pj0p&export=do
 * To ensure the trained model focuses on iris region inside images, I use [Grad-CAM](https://arxiv.org/abs/1610.02391) to visualize attention of the last feature layer (right before Global Average Pooling). To visualize heatmap, use this command:
 ```
 python visualize.py --image /home/thuyngch/datasets/Iris/MMU2/010105.bmp \
-                    --config config/efficientnet_b0.json \
+                    --config config/mmu2_b0.json \
                     --weight /home/thuyngch/checkpoints/model_best.pth \
                     --use-cuda
 ```

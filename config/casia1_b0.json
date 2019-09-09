@@ -1,0 +1,85 @@
+{
+    "name": "IrisRecog",
+    "n_gpu": 1,
+
+    "arch": {
+        "type": "ClassificationModel",
+        "args": {
+			"model_name": "efficientnet_b0",
+			"num_classes": 108,
+			"in_chans": 3,
+			"pretrained": true
+        },
+        "pretrained": null
+    },
+
+	"train_loader": {
+		"dataset": {
+			"type": "MMU2TxtDataset",
+			"args": {
+				"txtfile": "data/casia1_train.txt",
+				"num_classes": 100, "use_sigmoid": false, "color_channel": "RGB",
+				"input_size": [256, 256], "normalize": true, "one_hot": false,
+				"rot90": 0.5, "flip_hor": 0.5, "flip_ver": 0.5, "brightness": 0.3, "contrast": 0.2, "shift": 0.2, "scale": 0.6, "rotate": 30,
+				"is_training": true, "img_loader_mode": "pillow", "normalize_mode": "imagenet"
+			}
+		},
+		"collate": "default_collate",
+		"shuffle": true,
+		"batch_size": 128,
+		"num_workers": 16,
+		"pin_memory": true
+    },
+
+	"valid_loader": {
+		"dataset": {
+			"type": "MMU2TxtDataset",
+			"args": {
+				"txtfile": "data/casia1_valid.txt",
+				"num_classes": 100, "use_sigmoid": false, "color_channel": "RGB",
+				"input_size": [256, 256], "normalize": true, "one_hot": false,
+				"is_training": false, "img_loader_mode": "pillow", "normalize_mode": "imagenet"
+			}
+		},
+		"collate": "default_collate",
+		"shuffle": true,
+		"batch_size": 128,
+		"num_workers": 16,
+		"pin_memory": true
+	},
+
+    "optimizer": {
+        "type": "SGD",
+        "args": {"lr": 1e-2, "momentum": 0.9, "nesterov": false, "weight_decay": 5e-4},
+		"grad_clip": null
+	},
+
+	"losses": [
+		{"type": "ce_loss", "args": {"loss_weight": 1.0}}
+	],
+
+	"metrics": [
+		{"type": "acc", "args": {}}
+	],
+
+    "lr_scheduler": {
+        "type": "CosineAnnealingWarmRestarts",
+		"by_epoch": false,
+        "args": {"T_0": 150, "eta_min": 5e-5, "last_epoch": -1}
+    },
+
+	"trainer": {
+        "type": "ClassificationTrainer",
+		"epochs": 300,
+		"save_dir": "/home/member/Workspace/thuync/checkpoints/",
+		"save_freq": null,
+		"verbosity": 2,
+		"monitor": "valid_loss",
+		"monitor_mode": "min"
+	},
+
+	"visualization":{
+		"tensorboardX": true,
+		"log_dir": "/home/member/Workspace/thuync/checkpoints/"
+	}
+}
