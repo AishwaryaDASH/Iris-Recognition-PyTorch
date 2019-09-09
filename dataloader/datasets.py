@@ -81,7 +81,7 @@ class TxtDataset(BaseDataset):
 		self.check_filepaths(self.image_files)
 
 	def _get_labels(self):
-		raise NotImplementedError
+		self.labels = []
 
 	def _augment_data(self, image):
 		image = self.augmentor(image)
