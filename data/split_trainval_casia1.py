@@ -26,7 +26,7 @@ if __name__ == "__main__":
 	data_dict = defaultdict(lambda: defaultdict(lambda: list()))
 	for file in files:
 		basename = os.path.basename(file).split('.')[0]
-		person_id, eye_id, ins_id = basename.split('/')
+		person_id, eye_id, ins_id = basename.split('_')
 		data_dict[person_id][eye_id].append(file)
 
 	for vals in data_dict.values():
