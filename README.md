@@ -107,6 +107,8 @@ python train.py --config config/mmu2_b0.json --device 0
 ```
 gdown https://drive.google.com/uc?id=18-4JLAEJGa1D4My2mky4Co0WU1eDPq6X&export=download # mmu2_b0
 gdown https://drive.google.com/uc?id=10sOieImsvre4msafbr07F_hdN_o6Pj0p&export=download # mmu2_b1
+gdown https://drive.google.com/uc?id=1yAnpO_UotSP8zgVTGqOT0iLpGcAOF5EE&export=download # casia1_b0
+gdown https://drive.google.com/uc?id=1VdAg-_Sjm3gVAg_KLpJkL6RktxAcgJZH&export=download # casia1_b1
 ```
 
 * To ensure the trained model focuses on iris region inside images, I use [Grad-CAM](https://arxiv.org/abs/1610.02391) to visualize attention of the last feature layer (right before Global Average Pooling). To visualize heatmap, use this command:
